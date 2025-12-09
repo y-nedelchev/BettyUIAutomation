@@ -1,4 +1,4 @@
-type GameConfig = {
+export type GameConfig = {
     name: string
     selectors: GameSelectors
 }
@@ -11,17 +11,36 @@ type GameSelectors = {
     stakeValue: string
     spinButton: string
     spinInProgressLocator?: string
+    stakeMinus: string
+    stakePlus: string
 }
 
-export const irishWildsConfig: GameConfig = {
-    name: 'Irish Wilds',
-    selectors: {
-        playButton: 'button:has-text("Play")',
-        clickableArea: 'canvas',
-        balance: 'TODO-balance-locator',
-        win: 'TODO-win-locator',
-        stakeValue: 'TODO-stake-value-locator',
-        spinButton: 'TODO-spin-button-locator',
-        spinInProgressLocator: 'TODO-spinning-state-locator'
-    }
-}
+export const gameConfig: GameConfig[] =
+    [
+        {
+        name: '10x Minimum',
+        selectors: {
+            playButton: '.button-play-block',
+            balance: '.balance .amount',
+            win: '.win .amount',
+            stakeValue: '.stake .amount-stake',
+            spinButton: '.arrows-spin-button',
+            spinInProgressLocator: '.arrows-spin-button[disabled]',
+            stakeMinus: '[xlink:href]',
+            stakePlus: '[xlink:href]'
+        }
+    },
+
+    // export const irishWildsConfig: GameConfig = {
+    //     name: 'Irish Wilds',
+    //     selectors: {
+    //         playButton: 'button:has-text("Play")',
+    //         clickableArea: 'canvas',
+    //         balance: 'TODO-balance-locator',
+    //         win: 'TODO-win-locator',
+    //         stakeValue: 'TODO-stake-value-locator',
+    //         spinButton: 'TODO-spin-button-locator',
+    //         spinInProgressLocator: 'TODO-spinning-state-locator'
+    //     }
+    // }
+]
