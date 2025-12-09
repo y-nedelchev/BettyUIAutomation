@@ -3,7 +3,7 @@ export type HomeGameEntry = {
     expectedUrlPart: string
 }
 
-export const homeGamesUnderTest: HomeGameEntry[] = [
+export const homeGames: HomeGameEntry[] = [
     {
         title: '10x Minimum',
         expectedUrlPart: 'https://tinyurl.com/3sxw6wy8'
