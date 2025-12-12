@@ -7,14 +7,14 @@ export type TestOptions = {
 }
 
 export const test = base.extend<TestOptions>({
-
-    navigateToHomePage: async ({page}, use) => {
-        await page.goto('/')
-        await use('')
-    },
-
     pm: async ({page}, use) => {
         const pageManager = new PageManager(page)
         await use(pageManager)
+    },
+
+    navigateToHomePage: async ({page, pm}, use) => {
+        await page.goto('/')
+        await pm.onBasePage().acceptCookies()
+        await use('')
     }
 })
