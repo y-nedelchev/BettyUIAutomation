@@ -3,3 +3,4 @@ node_modules
 /test-results
 /test-report
 /playwright-report/
+.DS_Store
