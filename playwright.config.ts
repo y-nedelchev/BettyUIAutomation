@@ -1,11 +1,9 @@
 import {defineConfig, devices} from '@playwright/test'
 
 export default defineConfig({
-  timeout: 180000,
-  expect: {
-    timeout: 15000,
-  },
-  workers: 4,
+  timeout: 120000,
+  expect: { timeout: 5000 },
+  workers: 1,
   retries: process.env.CI ? 2 : 0,
   reporter: [
     ['list'],
@@ -14,7 +12,9 @@ export default defineConfig({
   use: {
     baseURL: 'https://www.spinberry.com/#products/',
     headless: true,
-    actionTimeout: 15000,
+    actionTimeout: 5000,
+    navigationTimeout: 15000,
+
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     video: {
@@ -31,11 +31,11 @@ export default defineConfig({
         ...devices['Desktop Chrome']
       }
     },
-    // {
-    //   name: 'mobile-chrome',
-    //   use: {
-    //     ...devices['Pixel 5']
-    //   }
-    // }
+    {
+      name: 'mobile-chrome',
+      use: {
+        ...devices['iPhone 14']
+      }
+    }
   ]
 })
